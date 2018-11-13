@@ -42,3 +42,6 @@ cv2.imshow('result', result)
 while (True):
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
+
+# kan intressant zijn om otsu niet voor volledige foto maar voor segmenten te berekenen, dus bv otsu met regio rond pixel, zo kan voor orc_scanner de schaduwregio onder de hand gefixt worden
