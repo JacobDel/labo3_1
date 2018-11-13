@@ -1,0 +1,33 @@
+import cv2
+import sys
+import os
+import numpy as np
+
+def currentIntensity(frame):
+    meanIntensity = np.mean(frame)
+    return meanIntensity/255
+
+def sigma(frame):
+    return np.std(frame)/255
+
+def getGammaValue(frame):
+    if currentIntensity(frame) > 0.5:
+        return 1 + abs(0.5-currentIntensity(frame))/sigma(frame)
+    else:
+        return 1/(1+(abs(0.5-currentIntensity(frame))/sigma(frame)))
+
+orgImage = cv2.imread(str(sys.argv[4]))
+image = orgImage
+image = image.astype(np.float64)
+gamma = getGammaValue(image)
+intensity = currentIntensity(image)
+image = np.divide(image,255)
+image = np.power(image,gamma)
+multiplyFactor = 255
+image = np.multiply(image,multiplyFactor)
+image = image.astype('uint8')
+# image = np.clip(image,0,255)
+cv2.imshow('org image',orgImage)
+cv2.imshow('new image',image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
