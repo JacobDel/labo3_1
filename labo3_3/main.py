@@ -17,17 +17,6 @@ def histogram_match_single_color(orgimage, cartimage):
     L = (hist.size-1) * Cm
     L_round = np.round(L).astype(cartimage.dtype)
 
-    # manual_eq_cartimage = np.zeros(orgimage.shape, dtype=orgimage.dtype)
-    # for x in range(0, orgimage.shape[0]):
-    #     for y in range(0, orgimage.shape[1]):
-    #         manual_eq_cartimage[x][y] = L_round[orgimage[x][y]]
-    # cv2.imshow('org', cartimage)
-    # cv2.imshow('eq', cv2.equalizeHist(cartimage))
-    # cv2.imshow('man-eq', manual_eq_cartimage)
-    # cv2.waitKey(1)
-
-    #         this part is inherantly wrong :/ i match a given color to a color pressent in the original, this does not keep in account the
-    #           amount of that color that should be present
     pixel_map = {}
     for pixel_value in np.unique(L_round):
         indexes = np.where(L_round == pixel_value)[0]
@@ -43,36 +32,6 @@ def histogram_match_single_color(orgimage, cartimage):
                 idx = np.argmin((np.abs(list_of_keys - eq_orgimage[x][y])))     #we proberen de best passende key te vinden
                 # in de table voor het omzetten van equalized-histogram naar cartoon-histogram
                 final_image[x][y] = pixel_map.get(list_of_keys[idx])
-
-
-
-    # amount_pixels = orgimage.size
-    # Pm_array = np.divide(np.ndarray.flatten((cv2.calcHist([orgimage], [0], None, [256], [0, 256])).astype(int)), orgimage.size)
-    # Cm = np.cumsum(Pm_array)
-    # L = (hist.size-1) * Cm
-    # L_round = np.round(L).astype(orgimage.dtype)
-    # manual_eq_cartimage = np.zeros(orgimage.shape, dtype=orgimage.dtype)
-    # for x in range(0, orgimage.shape[0]):
-    #     for y in range(0, orgimage.shape[1]):
-    #         manual_eq_cartimage[x][y] = L_round[orgimage[x][y]]
-
-
-    # cv2.imshow('final image', final_image)
-    # cv2.waitKey(1)
-    # hist = np.ndarray.flatten((cv2.calcHist([cartimage], [0], None, [256], [0, 256])).astype(int))/cartimage.size
-    # cv2.imshow('cart', cartimage)
-    # cv2.imshow('final', final_image)
-    # cv2.imshow("org", orgimage)
-    # cv2.imshow("eq_org", cv2.equalizeHist(orgimage))
-    # cv2.waitKey(1)
-    # plt.plot(np.ndarray.flatten((cv2.calcHist([orgimage], [0], None, [256], [0, 256])).astype(int))/orgimage.size, label='org')
-    # plt.plot(np.ndarray.flatten((cv2.calcHist([cv2.equalizeHist(orgimage)], [0], None, [256], [0, 256])).astype(int))/orgimage.size, label='eq_org')
-    # plt.plot(np.ndarray.flatten((cv2.calcHist([manual_eq_cartimage], [0], None, [256], [0, 256])).astype(int))/orgimage.size, label='manual_eq_org')
-    # plt.plot(np.ndarray.flatten((cv2.calcHist([cartimage], [0], None, [256], [0, 256])).astype(int))/cartimage.size, label='cartimage')
-    # plt.plot(np.ndarray.flatten((cv2.calcHist([cv2.equalizeHist(cartimage)], [0], None, [256], [0, 256])).astype(int))/cartimage.size, label='eq_cartimage')
-    # plt.legend()
-    # plt.show()
-    # plt.close()
     return final_image
 
 def ecdf(x):
@@ -83,8 +42,8 @@ def ecdf(x):
     return vals, ecdf
 
 def histogram_match_single_color2(source, template):
-    bron = source
-    cartoon = template
+    # bron = source
+    # cartoon = template
     numbertype = source.dtype
     oldshape = source.shape
     source = source.ravel()
@@ -123,11 +82,8 @@ def histogram_match(orgimage, cartimage):
     colorsplit_orgimage = cv2.split(orgimage)
     colorsplit_final_image = []
     for i in range(0, 3):
-        # colorsplit_orgimage[i] = histogram_match_single_color(colorsplit_orgimage[i], colorsplit_cartoon[i])
         colorsplit_final_image.append(histogram_match_single_color2(colorsplit_orgimage[i], colorsplit_cartoon[i]))
     image = cv2.merge(colorsplit_final_image)
-    testimage = cv2.merge(colorsplit_orgimage)
-    cv2.imshow('org', testimage)
     cv2.imshow('color', image)
     cv2.imshow('cartoonimmage', cartimage)
     cv2.waitKey(1)
