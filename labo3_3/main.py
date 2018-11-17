@@ -8,8 +8,7 @@ from matplotlib import pyplot as plt
 def histogram_match_single_color(orgimage, cartimage):
     eq_orgimage = cv2.equalizeHist(orgimage)       #equalizes the original image to a uniform histogram image
     hist = np.ndarray.flatten((cv2.calcHist([cartimage], [0], None, [256], [0, 256])).astype(int))
-    # plt.plot(hist)
-    # plt.show()
+    plt.plot(hist)
 
     amount_pixels = cartimage.size
     Pm_array = np.divide(hist, amount_pixels)
@@ -24,17 +23,10 @@ def histogram_match_single_color(orgimage, cartimage):
         else:
             pixel_map[a] = hist[i]
 
-    # cv2.imshow("cartimage", cartimage)
-    # equalized_cartimage = np.zeros(cartimage.shape, dtype='uint8')
-    # for x in range(0, cartimage.shape[0]):
-    #     for y in range(0, cartimage.shape[1]):
-    #         a = L_round[cartimage[x][y]]
-    #         equalized_cartimage[x][y] = a
-    #
-    # cv2.imshow('equalized_manual', equalized_cartimage)
-    # cv2.imshow('equalized_cv2', cv2.equalizeHist(cartimage))
-    # now that we can calculate the equalized image, we need to do the reverse on the original image
 
+
+    #         this part is enherantly wrong :/ i match a given color to a color pressent in the original, this does not keep in account the
+    #           amount of that color that should be pressent
     final_image = np.zeros(orgimage.shape, dtype=orgimage.dtype)
     list_of_keys = np.asarray(list(pixel_map.keys()))
     for x in range(0, orgimage.shape[0]):
@@ -45,8 +37,13 @@ def histogram_match_single_color(orgimage, cartimage):
                 idx = np.argmin((np.abs(list_of_keys - eq_orgimage[x][y])))     #we proberen de best passende key te vinden
                 # in de table voor het omzetten van equalized-histogram naar cartoon-histogram
                 final_image[x][y] = pixel_map.get(list_of_keys[idx])
-    cv2.imshow('final image', final_image)
-    cv2.waitKey(1)
+    # cv2.imshow('final image', final_image)
+    # cv2.waitKey(1)
+
+    hist = np.ndarray.flatten((cv2.calcHist([final_image], [0], None, [256], [0, 256])).astype(int))
+    plt.plot(hist)
+    plt.show()
+    plt.close()
     return final_image
 
 def histogram_match(orgimage, cartimage):
