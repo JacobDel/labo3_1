@@ -1,7 +1,6 @@
 import sys
 import cv2
 import numpy as np
-from matplotlib import pyplot as plt
 
 
 # this method was based on doing equalization on the original image, and then using reverse equalization based on the cartoon image,
@@ -96,10 +95,32 @@ def histogram_match(orgimage, cartimage):
 orgimage = cv2.imread(str(sys.argv[1]))
 cartimage = cv2.imread(str(sys.argv[2]))
 step1_image = histogram_match(orgimage, cartimage)
+# get the edges of the image
+edges = cv2.Canny(step1_image, 100, 200)
+# by multiplying both images we get black edges (because the value of black is 0), but white is 255 so:
+# multiplyImage = np.zeros((len(step1_image), len(step1_image[0]), 3))
+multiplyImage = np.where(edges > 100, 0, 1)
+stacked_img = np.stack((multiplyImage,)*3, axis=-1)
+# threeDMultiplyImage = np.array((multiplyImage, multiplyImage, multiplyImage))
+result2 = np.multiply(step1_image, stacked_img)
+# step1_image = np.where(step1_image < 1, 0)
+# result2 = step1_image+stacked_img
 
+np.clip(result2, 0, 256)
+result2 = result2.astype('uint8')
+# result2 = step1_image
+# for y in range(0,len(step1_image)):
+#     for x in range(0,len(step1_image[0])):
+#         if edges[y][x]>0:
+#             result2[y][x] = step1_image[y][x]
+#         else:
+#             result2[y][x] = [0,0,0]
 cv2.imshow('original', orgimage)
 cv2.imshow('cartoon image', cartimage)
-cv2.imshow('result', step1_image)
+cv2.imshow('result1', cv2.resize(step1_image, (600, 300)))
+cv2.imshow('edges result1', cv2.resize(edges, (600, 300)))
+# cv2.imshow("result2",result2)
+cv2.imshow('result2', cv2.resize(result2, (600, 300)))
 while (True):
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
