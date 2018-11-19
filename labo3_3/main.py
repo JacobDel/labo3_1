@@ -92,11 +92,11 @@ def histogram_match(orgimage, cartimage):
 # finally the 3 seperate color images need to be combined
 
 
-orgimage = cv2.imread(str(sys.argv[1]))
-cartimage = cv2.imread(str(sys.argv[2]))
+orgimage = cv2.imread(str(sys.argv[2]))
+cartimage = cv2.imread(str(sys.argv[1]))
 step1_image = histogram_match(orgimage, cartimage)
 # get the edges of the image
-edges = cv2.Canny(step1_image, 100, 200)
+edges = cv2.Canny(step1_image, 50, 500)
 # by multiplying both images we get black edges (because the value of black is 0), but white is 255 so:
 # multiplyImage = np.zeros((len(step1_image), len(step1_image[0]), 3))
 multiplyImage = np.where(edges > 100, 0, 1)
@@ -115,12 +115,16 @@ result2 = result2.astype('uint8')
 #             result2[y][x] = step1_image[y][x]
 #         else:
 #             result2[y][x] = [0,0,0]
+
+# bilateral filter
+result3 = cv2.bilateralFilter(result2,9,75,75)
+
 cv2.imshow('original', orgimage)
 cv2.imshow('cartoon image', cartimage)
 cv2.imshow('result1', cv2.resize(step1_image, (600, 300)))
 cv2.imshow('edges result1', cv2.resize(edges, (600, 300)))
-# cv2.imshow("result2",result2)
 cv2.imshow('result2', cv2.resize(result2, (600, 300)))
+cv2.imshow('result3', cv2.resize(result3, (600, 300)))
 while (True):
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
