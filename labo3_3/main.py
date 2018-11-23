@@ -99,7 +99,7 @@ step1_image = histogram_match(orgimage, cartimage)
 edges = cv2.Canny(step1_image, 50, 500)
 # by multiplying both images we get black edges (because the value of black is 0), but white is 255 so:
 # multiplyImage = np.zeros((len(step1_image), len(step1_image[0]), 3))
-multiplyImage = np.where(edges > 100, 0, 1)
+multiplyImage = np.where(edges > 100, 0, 1) # or we can use np.clip
 stacked_img = np.stack((multiplyImage,)*3, axis=-1)
 # threeDMultiplyImage = np.array((multiplyImage, multiplyImage, multiplyImage))
 result2 = np.multiply(step1_image, stacked_img)
