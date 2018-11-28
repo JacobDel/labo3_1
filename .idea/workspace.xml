@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c37b6c2-8971-4362-9ebe-50639de15413" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/labo3_2/waterfall.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/labo3_2/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/labo3_2/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo3_3/cartoon_image.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/labo3_3/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/labo3_3/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,8 +59,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/labo3_3/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+            <state relative-caret-position="301">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -72,8 +71,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/labo3_2/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="150">
+              <caret line="12" selection-start-line="12" selection-end-line="13" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -123,7 +122,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
+    <option name="x" value="1909" />
     <option name="width" value="1940" />
     <option name="height" value="2111" />
   </component>
@@ -204,7 +203,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/labo3_3/main.py" />
-      <option name="PARAMETERS" value="C:\Users\Martijn\Desktop\schoolwerk\multimedia\labo3_1\labo3_3\cartoon_image.jpg C:\Users\Martijn\Desktop\schoolwerk\multimedia\labo3_1\gammaImages\image6.jpg" />
+      <option name="PARAMETERS" value="C:\Users\Martijn\Desktop\schoolwerk\multimedia\labo3_1\labo3_3\cartoonimage1.png C:\Users\Martijn\Desktop\schoolwerk\multimedia\labo3_1\labo3_3\testimage1.jpg" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -252,12 +251,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1293" height="1407" extended-state="0" />
+    <frame x="-8" y="0" width="1294" height="1408" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11942675" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15035799" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32651454" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.22895359" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -311,17 +310,10 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="11" />
+      <option name="time" value="13" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../labo_1/baseline_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="34" selection-start-line="34" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/labo3_2/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -483,9 +475,7 @@
     <entry file="file://$PROJECT_DIR$/gammaImages/image8.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/labo3_3/cartoon_image.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/labo3_3/cartoon_image.jpg" />
     <entry file="file://$PROJECT_DIR$/gammaImages/image3.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -498,9 +488,7 @@
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/labo3_2/binary_threshold_image.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/labo3_2/binary_threshold_image.jpg" />
     <entry file="file://$PROJECT_DIR$/labo3_2/binary_threshold_image.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -510,23 +498,22 @@
     <entry file="file://$PROJECT_DIR$/gammaImages/image6.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/labo3_2/grey_image.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/labo3_2/grey_image.png" />
     <entry file="file://$PROJECT_DIR$/labo3_2/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="150">
+          <caret line="12" selection-start-line="12" selection-end-line="13" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/labo3_3/result.png" />
     <entry file="file://$PROJECT_DIR$/labo3_3/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+        <state relative-caret-position="301">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

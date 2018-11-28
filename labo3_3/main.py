@@ -1,7 +1,7 @@
 import sys
 import cv2
 import numpy as np
-
+import os
 
 # this method was based on doing equalization on the original image, and then using reverse equalization based on the cartoon image,
 # this way the original image would end up with a cartoon-like histogram. this however did not work.
@@ -69,6 +69,7 @@ def histogram_match(orgimage,cartimage):
     split_final_image = []
     for i in range(0, 3):
         split_final_image.append(histogram_match_single_color(colorsplit_orgimage_hsv[i], colorsplit_cartoon_hsv[i]))
+    # split_final_image[2] = colorsplit_orgimage_hsv[2]
     image = cv2.merge(split_final_image)
     image = cv2.cvtColor(image, cv2.COLOR_HSV2RGB)
 
@@ -105,12 +106,19 @@ result2 = result2.astype('uint8')
 # bilateral filter
 result3 = cv2.bilateralFilter(result2,9,75,75)
 
+
+cv2.imwrite(os.path.join(os.getcwd(), "result.png"), result3)
+
 cv2.imshow('original', orgimage)
 cv2.imshow('cartoon image', cartimage)
-cv2.imshow('result1', cv2.resize(step1_image, (600, 300)))
-cv2.imshow('edges result1', cv2.resize(edges, (600, 300)))
-cv2.imshow('result2', cv2.resize(result2, (600, 300)))
-cv2.imshow('result3', cv2.resize(result3, (600, 300)))
+cv2.imshow('result1', cv2.resize(step1_image, (step1_image.shape[1], step1_image.shape[0])))
+cv2.imshow('edges result1', cv2.resize(edges, (edges.shape[1], edges.shape[0])))
+cv2.imshow('result2', cv2.resize(result2, (result2.shape[1], result2.shape[0])))
+cv2.imshow('result3', cv2.resize(result3, (result3.shape[1], result3.shape[0])))
+# cv2.imshow('result1', cv2.resize(step1_image, (600, 300)))
+# cv2.imshow('edges result1', cv2.resize(edges, (600, 300)))
+# cv2.imshow('result2', cv2.resize(result2, (600, 300)))
+# cv2.imshow('result3', cv2.resize(result3, (600, 300)))
 while (True):
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
