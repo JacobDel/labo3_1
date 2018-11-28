@@ -27,10 +27,5 @@ for i in range(1,len(sys.argv)):
     multiplyFactor = 255
     image = np.multiply(image,multiplyFactor)
     image = image.astype('uint8')
-    # image = np.clip(image,0,255)
-    # cv2.imshow('org image',orgImage)
-    # cv2.imshow('new image',image)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
     imageName = "gammaImages\image"+(str(i))
     cv2.imwrite(imageName+".jpg",image)
